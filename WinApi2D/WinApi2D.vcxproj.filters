@@ -210,6 +210,9 @@
     <ClInclude Include="CImageObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CImageButton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinApi2D.cpp">
@@ -327,6 +330,9 @@
       <Filter>Object\Character</Filter>
     </ClCompile>
     <ClCompile Include="CImageObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CImageButton.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
