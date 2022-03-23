@@ -40,8 +40,8 @@ void CScene_Title::Enter() {
 	//2. 로고 출력용 오브젝트 제작,
  	CImageObject* logoObject = new CImageObject;
 	logoObject->Load(L"LogoImage", L"texture\\Kirby's-Adventure-Logo.png");
-	logoObject->SetPos(fPoint(100.f, 100.f));
-	logoObject->SetScale(fPoint(1000.f, 200.f));
+	logoObject->SetPos(fPoint(WINSIZEX / 4.f, 100.f));
+	logoObject->SetScale(fPoint(600.f, 300.f));
 	AddObject(logoObject, GROUP_GAMEOBJ::BACKGROUND);
 
 	
@@ -49,7 +49,7 @@ void CScene_Title::Enter() {
 	CImageButton* playButton = new CImageButton;
 	playButton->Load(L"Button", L"texture\\button_test.png");
 	playButton->SetText(L"PLAY");
-	playButton->SetPos(fPoint(WINSIZEX / 2.f - 100.f, 500.f));
+	playButton->SetPos(fPoint(WINSIZEX / 2.f - 100.f, 400.f));
 	playButton->SetScale(fPoint(200.f, 50.f));
 	playButton->SetClickedCallBack(ClickStartButton, 0, 0);
 	AddObject(playButton, GROUP_GAMEOBJ::UI);
@@ -58,12 +58,20 @@ void CScene_Title::Enter() {
 	CImageButton* helpButton = new CImageButton;
 	helpButton->Load(L"Button", L"texture\\button_test.png");
 	helpButton->SetText(L"HELP");
-	helpButton->SetPos(fPoint(WINSIZEX / 2.f - 100.f, 450.f));
+	helpButton->SetPos(fPoint(WINSIZEX / 2.f - 100.f, 500.f));
 	helpButton->SetScale(fPoint(200.f, 50.f));
 	helpButton->SetClickedCallBack(ClickStartButton, 0, 0);
 	AddObject(helpButton, GROUP_GAMEOBJ::UI);
 	
 	//5. 종료 버튼
+	CImageButton* exitButton = new CImageButton;
+	exitButton->Load(L"Button", L"texture\\button_test.png");
+	exitButton->SetText(L"EXIT");
+	exitButton->SetPos(fPoint(WINSIZEX / 2.f - 100.f, 600.f));
+	exitButton->SetScale(fPoint(200.f, 50.f));
+	exitButton->SetClickedCallBack(ClickExitButton, 0, 0);
+	AddObject(exitButton, GROUP_GAMEOBJ::UI);
+
 }
 
 void CScene_Title::Exit() {
