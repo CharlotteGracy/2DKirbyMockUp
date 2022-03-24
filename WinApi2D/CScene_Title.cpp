@@ -45,7 +45,7 @@ void CScene_Title::Enter() {
 	AddObject(logoObject, GROUP_GAMEOBJ::BACKGROUND);
 
 	
-	//3. 시작 버튼, 
+	//3. 시작 버튼
 	CImageButton* playButton = new CImageButton;
 	playButton->Load(L"Button", L"texture\\button_test.png");
 	playButton->SetText(L"PLAY");
