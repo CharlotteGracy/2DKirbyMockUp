@@ -12,7 +12,7 @@ CSceneManager::CSceneManager()
 		m_arrScene[i] = nullptr;
 	}
 	m_pCurScene = nullptr;
-}
+} 
 
 CSceneManager::~CSceneManager()
 {
