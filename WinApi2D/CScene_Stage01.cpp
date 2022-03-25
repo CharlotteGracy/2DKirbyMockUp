@@ -47,11 +47,21 @@ void CScene_Stage01::Enter() {
 	CCameraManager::GetInst()->SetTargetObj(pPlayer);
 }
 
-void CScene_Stage01::Exit() {
+void CScene_Stage01::Win() {
 	//TODO: Win! 화면 출력
 	//
 	//ChangeScn(GROUP_SCENE::WIN);
 
+}
+
+void CScene_Stage01::GameOver() {
+	//TODO: Game Over! 화면 출력
+	//ChangeScn(GROUP_SCENE::GAMEOVER);
+
+}
+
+void CScene_Stage01::Exit()
+{
 }
 
 

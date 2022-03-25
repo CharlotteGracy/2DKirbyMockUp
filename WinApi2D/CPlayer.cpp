@@ -51,9 +51,12 @@ void CPlayer::update() {
 	fPoint pos = GetPos();
 	if (Key(VK_LEFT)) {
 		pos.x -= 100 * fDT;
+		GetAnimator()->Play(L"LeftMove");
 	}
 	if (Key(VK_RIGHT)) {
 		pos.x += 100 * fDT;
+		GetAnimator()->Play(L"RightMove");
+
 	}
 	if (Key(VK_UP)) {
 		pos.y -= 100 * fDT;
@@ -97,7 +100,19 @@ void CPlayer::CreateBomb() {
 	//Bomb Object
 	CBomb* pBomb = new CBomb;
 	pBomb->SetPos(fpBombPos);
-	pBomb->SetDir(fVec2(1, 0));
+//	pBomb->SetDir(fVec2(1, 0));
+
+	if (Key(VK_LEFT)/*캐릭터가 왼쪽을 보고 있을 때*/) {
+		/*TODO: 왼쪽으로 가고 있을 때(LEFT 키를 누르고 있을 때)는 
+		왼쪽으로 폭탄이 나오는데 가만히 있는 상태에서 왼쪽을 보고 있을 때는 
+		오른쪽으로 발사되는 문제가 있음.*/
+		pBomb->SetDir(fVec2(-1, 0));
+	}
+	else {
+		pBomb->SetDir(fVec2(1, 0));
+	}
+
+
 
 	CreateObj(pBomb, GROUP_GAMEOBJ::BOMB_PLAYER);
 

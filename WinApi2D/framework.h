@@ -60,7 +60,7 @@ enum class GROUP_SCENE
 	START,
 	STAGE_01,
 	STAGE_02,
-
+	GAMEOVER,
 	SIZE,
 };
 
