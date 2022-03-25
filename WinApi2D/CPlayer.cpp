@@ -6,6 +6,10 @@
 #include "CCollider.h"
 #include "CAnimator.h"
 #include "CAnimation.h"
+#include "CTile.h"
+
+CPlayer* CPlayer::instance = nullptr;
+
 
 CPlayer::CPlayer() {
 	CD2DImage* m_pImg = CResourceManager::GetInst()->LoadD2DImage(L"PlayerImg", L"texture\\Animation_Player.bmp");
@@ -34,7 +38,7 @@ CPlayer::CPlayer() {
 }
 
 CPlayer::~CPlayer() {
-
+	instance = nullptr;
 }
 
 CPlayer* CPlayer::Clone()
@@ -73,15 +77,6 @@ void CPlayer::render() {
 
 	component_render();
 
-	/*
-	Rectangle(hDC,
-		GetPos().x - GetScale().x / 2,
-		GetPos().y - GetScale().x / 2,
-		GetPos().x + GetScale().x / 2,
-		GetPos().y + GetScale().x / 2
-		
-	);
-*/
 }
 
 void CPlayer::RegisterPlayer()
@@ -107,3 +102,6 @@ void CPlayer::CreateBomb() {
 	CreateObj(pBomb, GROUP_GAMEOBJ::BOMB_PLAYER);
 
 }
+
+
+

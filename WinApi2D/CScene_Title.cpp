@@ -14,12 +14,14 @@ CScene_Title::~CScene_Title() {
 
 void ClickStartButton(DWORD_PTR, DWORD_PTR) {
 
-	//ChangeScn(GROUP_SCENE::STAGE_01);
+	ChangeScn(GROUP_SCENE::STAGE_01);
 
 }
 
 void ClickHelpButton(DWORD_PTR, DWORD_PTR) {
 	//TODO: 도움말 화면 출력
+	ChangeScn(GROUP_SCENE::HELP);
+
 }
 
 void ClickExitButton(DWORD_PTR, DWORD_PTR) {
@@ -27,7 +29,7 @@ void ClickExitButton(DWORD_PTR, DWORD_PTR) {
 }
 
 void CScene_Title::Enter() {
-	//TODO: 
+	//TODO: 로고와 버튼 위치 배경에 맞춰 조금 조정하기
 	//1. 배경 출력, 
 
 	CImageObject* backgroundObject = new CImageObject;
@@ -60,7 +62,7 @@ void CScene_Title::Enter() {
 	helpButton->SetText(L"HELP");
 	helpButton->SetPos(fPoint(WINSIZEX / 2.f - 100.f, 530.f));
 	helpButton->SetScale(fPoint(200.f, 50.f));
-	helpButton->SetClickedCallBack(ClickStartButton, 0, 0);
+	helpButton->SetClickedCallBack(ClickHelpButton, 0, 0);
 	AddObject(helpButton, GROUP_GAMEOBJ::UI);
 	
 	//5. 종료 버튼

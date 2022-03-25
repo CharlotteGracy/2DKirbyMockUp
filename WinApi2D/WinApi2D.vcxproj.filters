@@ -216,6 +216,12 @@
     <ClInclude Include="CScene_Stage01.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="CScene_Help.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene_Win.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinApi2D.cpp">
@@ -340,6 +346,12 @@
     </ClCompile>
     <ClCompile Include="CScene_Stage01.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Help.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Win.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
