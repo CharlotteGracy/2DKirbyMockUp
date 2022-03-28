@@ -34,8 +34,8 @@ void CScene_Help::Enter()
 	CImageButton* gobackButton = new CImageButton;
 	gobackButton->Load(L"Button", L"texture\\button_test.png");
 	gobackButton->SetText(L"BACK");
-	gobackButton->SetPos(fPoint(WINSIZEX / 2.f - 100.f, 460.f));
-	gobackButton->SetScale(fPoint(200.f, 50.f));
+	gobackButton->SetPos(fPoint(WINSIZEX / 2.f - 90.f, 460.f));
+	gobackButton->SetScale(fPoint(180.f, 60.f));
 	gobackButton->SetClickedCallBack(ClickBackButton, 0, 0);
 	AddObject(gobackButton, GROUP_GAMEOBJ::UI);
 

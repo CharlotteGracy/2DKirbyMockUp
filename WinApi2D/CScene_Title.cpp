@@ -49,28 +49,28 @@ void CScene_Title::Enter() {
 	
 	//3. 시작 버튼
 	CImageButton* playButton = new CImageButton;
-	playButton->Load(L"Button", L"texture\\button_test.png");
+	playButton->Load(L"Button", L"texture\\button.png");
 	playButton->SetText(L"PLAY");
-	playButton->SetPos(fPoint(WINSIZEX / 2.f - 100.f, 460.f));
-	playButton->SetScale(fPoint(200.f, 50.f));
+	playButton->SetPos(fPoint(WINSIZEX / 2.f - 90.f, 460.f));
+	playButton->SetScale(fPoint(180.f, 60.f));
 	playButton->SetClickedCallBack(ClickStartButton, 0, 0);
 	AddObject(playButton, GROUP_GAMEOBJ::UI);
 
 	//4. 도움말 버튼 
 	CImageButton* helpButton = new CImageButton;
-	helpButton->Load(L"Button", L"texture\\button_test.png");
+	helpButton->Load(L"Button", L"texture\\button.png");
 	helpButton->SetText(L"HELP");
-	helpButton->SetPos(fPoint(WINSIZEX / 2.f - 100.f, 530.f));
-	helpButton->SetScale(fPoint(200.f, 50.f));
+	helpButton->SetPos(fPoint(WINSIZEX / 2.f - 90.f, 530.f));
+	helpButton->SetScale(fPoint(180.f, 60.f));
 	helpButton->SetClickedCallBack(ClickHelpButton, 0, 0);
 	AddObject(helpButton, GROUP_GAMEOBJ::UI);
 	
 	//5. 종료 버튼
 	CImageButton* exitButton = new CImageButton;
-	exitButton->Load(L"Button", L"texture\\button_test.png");
+	exitButton->Load(L"Button", L"texture\\button.png");
 	exitButton->SetText(L"EXIT");
-	exitButton->SetPos(fPoint(WINSIZEX / 2.f - 100.f, 600.f));
-	exitButton->SetScale(fPoint(200.f, 50.f));
+	exitButton->SetPos(fPoint(WINSIZEX / 2.f - 90.f, 600.f));
+	exitButton->SetScale(fPoint(180.f, 60.f));
 	exitButton->SetClickedCallBack(ClickExitButton, 0, 0);
 	AddObject(exitButton, GROUP_GAMEOBJ::UI);
 
