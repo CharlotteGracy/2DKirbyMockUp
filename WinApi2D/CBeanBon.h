@@ -19,7 +19,6 @@ class CBeanbon : public CMonster
 	void update();
 
 	float GetSpeed();
-	const tMonInfo& GetMonInfo();
 
 	void SetSpeed(float speed);
 	void SetAI(AI* ai);

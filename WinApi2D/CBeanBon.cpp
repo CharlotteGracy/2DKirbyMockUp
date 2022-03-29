@@ -49,11 +49,6 @@ float CBeanbon::GetSpeed()
 	return 0.0f;
 }
 
-const tMonInfo& CBeanbon::GetMonInfo()
-{
-	// TODO: 여기에 return 문을 삽입합니다.
-	return;
-}
 
 void CBeanbon::SetSpeed(float speed)
 {

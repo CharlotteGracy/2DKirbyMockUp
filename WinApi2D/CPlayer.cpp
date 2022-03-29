@@ -31,10 +31,14 @@ CPlayer::CPlayer() {
 	GetAnimator()->Play(L"LeftNone");*/
 
 	//TODO: 프레임 밀리는 거 수정, 방향 바꾸기
-	GetAnimator()->CreateAnimation(L"LeftNone", m_pImg, fPoint(0.f, 36.f), fPoint(36.f, 36.f), fPoint(36.f, 0.f), 0.5f, 9);
-	GetAnimator()->CreateAnimation(L"RightNone", m_pImg, fPoint(0.f, 36.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.5f, 9);
+	GetAnimator()->CreateAnimation(L"LeftNone", m_pImg, fPoint(0.f, 37.f), fPoint(37.f, 37.f), fPoint(37.f, 0.f), 0.5f, 9);
+	GetAnimator()->CreateAnimation(L"RightNone", m_pImg, fPoint(0.f, 37.f), fPoint(37.f, 37.f), fPoint(37.f, 0.f), 0.5f, 9);
 	GetAnimator()->CreateAnimation(L"LeftMove", m_pImg, fPoint(0.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 10);
 	GetAnimator()->CreateAnimation(L"RightMove", m_pImg, fPoint(0.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 10);
+
+	GetAnimator()->CreateAnimation(L"DownMove", m_pImg, fPoint(0.f, 78.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 1);
+
+
 	GetAnimator()->CreateAnimation(L"LeftHit", m_pImg, fPoint(114.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 4);
 	GetAnimator()->CreateAnimation(L"RightHit", m_pImg, fPoint(114.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 4);
 	GetAnimator()->Play(L"LeftNone");
@@ -70,9 +74,13 @@ void CPlayer::update() {
 	}
 	if (Key(VK_UP)) {
 		pos.y -= 150 * fDT;
+//		GetAnimator()->Play(L"Jump");
+
 	}
 	if (Key(VK_DOWN)) {
 		pos.y += 150 * fDT;
+		GetAnimator()->Play(L"DownMove");
+
 	}
 
 	SetPos(pos);
