@@ -12,28 +12,28 @@ CPlayer* CPlayer::instance = nullptr;
 
 
 CPlayer::CPlayer() {
-	CD2DImage* m_pImg = CResourceManager::GetInst()->LoadD2DImage(L"PlayerImg", L"texture\\Animation_Player.bmp");
+	CD2DImage* m_pImg = CResourceManager::GetInst()->LoadD2DImage(L"PlayerImg", L"texture\\Player_Kirby.png");
 	SetName(L"Player");
-	SetScale(fPoint(70.f, 70.f));
+	SetScale(fPoint(38.f, 38.f));
 
 	CreateCollider();
-	GetCollider()->SetScale(fPoint(40.f, 40.f));
-	GetCollider()->SetOffsetPos(fPoint(0.f, 10.f));
+	GetCollider()->SetScale(fPoint(20.f, 20.f));
+	GetCollider()->SetOffsetPos(fPoint(0.f, 5.f));
 
 	CreateAnimator();
-	GetAnimator()->CreateAnimation(L"LeftNone", m_pImg, fPoint(0.f, 0.f), fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.5f, 2);
-	GetAnimator()->CreateAnimation(L"RightNone", m_pImg, fPoint(0.f, 70.f), fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.5f, 2);
-	GetAnimator()->CreateAnimation(L"LeftMove", m_pImg, fPoint(0.f, 140.f), fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.25f, 3);
-	GetAnimator()->CreateAnimation(L"RightMove", m_pImg, fPoint(0.f, 210.f), fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.25f, 3);
-	GetAnimator()->CreateAnimation(L"LeftHit", m_pImg, fPoint(140.f, 0.f), fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.25f, 1);
-	GetAnimator()->CreateAnimation(L"RightHit", m_pImg, fPoint(140.f, 70.f), fPoint(70.f, 70.f), fPoint(70.f, 0.f), 0.25f, 1);
+	GetAnimator()->CreateAnimation(L"LeftNone", m_pImg, fPoint(0.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.5f, 9);
+	GetAnimator()->CreateAnimation(L"RightNone", m_pImg, fPoint(0.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.5f, 9);
+	GetAnimator()->CreateAnimation(L"LeftMove", m_pImg, fPoint(0.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 10);
+	GetAnimator()->CreateAnimation(L"RightMove", m_pImg, fPoint(0.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 10);
+	GetAnimator()->CreateAnimation(L"LeftHit", m_pImg, fPoint(114.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 4);
+	GetAnimator()->CreateAnimation(L"RightHit", m_pImg, fPoint(114.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 4);
 	GetAnimator()->Play(L"LeftNone");
 
 	CAnimation* pAni;
 	pAni = GetAnimator()->FindAnimation(L"LeftMove");
-	pAni->GetFrame(1).fptOffset = fPoint(0.f, -20.f);
+	pAni->GetFrame(9).fptOffset = fPoint(0.f, 3.f);
 	pAni = GetAnimator()->FindAnimation(L"RightMove");
-	pAni->GetFrame(1).fptOffset = fPoint(0.f, -20.f);
+	pAni->GetFrame(9).fptOffset = fPoint(0.f, -3.f);
 
 }
 
@@ -50,19 +50,19 @@ void CPlayer::update() {
 
 	fPoint pos = GetPos();
 	if (Key(VK_LEFT)) {
-		pos.x -= 100 * fDT;
+		pos.x -= 150 * fDT;
 		GetAnimator()->Play(L"LeftMove");
 	}
 	if (Key(VK_RIGHT)) {
-		pos.x += 100 * fDT;
+		pos.x += 150 * fDT;
 		GetAnimator()->Play(L"RightMove");
 
 	}
 	if (Key(VK_UP)) {
-		pos.y -= 100 * fDT;
+		pos.y -= 150 * fDT;
 	}
 	if (Key(VK_DOWN)) {
-		pos.y += 100 * fDT;
+		pos.y += 150 * fDT;
 	}
 
 	SetPos(pos);
