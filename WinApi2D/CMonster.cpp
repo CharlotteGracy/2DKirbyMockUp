@@ -17,11 +17,10 @@ CMonster::CMonster()
 	SetScale(fPoint(100, 100));
 
 	CreateCollider();
-	GetCollider()->SetScale(fPoint(90.f, 90.f));
+	GetCollider()->SetScale(fPoint(20.f, 20.f));
+	GetCollider()->SetOffsetPos(fPoint(0.f, 5.f));
 
-	CreateAnimator();
-	GetAnimator()->CreateAnimation(L"PlayerStand", m_pImg, fPoint(0, 0), fPoint(32.f, 32.f), fPoint(32.f, 0), 0.1f, 5, true);
-	GetAnimator()->Play(L"PlayerStand");
+
 }
 
 CMonster::~CMonster()
@@ -95,6 +94,7 @@ void CMonster::SetMonInfo(const tMonInfo& info)
 {
 	m_tInfo = info;
 }
+
 
 void CMonster::OnCollisionEnter(CCollider* pOther)
 {

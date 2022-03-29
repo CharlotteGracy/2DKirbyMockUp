@@ -4,6 +4,7 @@
 #include "CGameObject.h"
 #include "CPlayer.h"
 #include "CMonster.h"
+#include "CBeanBon.h"
 #include "CMap.h"
 #include "CBackGround.h"
 //#include "CSound.h"
@@ -37,18 +38,13 @@ void CScene_Stage01::Enter() {
 	AddObject(pPlayer, GROUP_GAMEOBJ::PLAYER);
 	pPlayer->RegisterPlayer();
 
-	/*
-	* TODO: 몬스터 만들기
-	CMonster* pMonster = new CMonster;
-	pMonster->SetPos(fPoint(1100, 350));
-	AddObject(pMonster, GROUP_GAMEOBJ::PLAYER);
-	*/
+	
+	// TODO: 몬스터 만들기
 
-	/*
-	//카메라 지정
-	CCameraManager::GetInst()->SetLookAt(fPoint(WINSIZEX / 2.f, WINSIZEY / 2.f));
-	CCameraManager::GetInst()->SetTargetObj(pPlayer);
-	*/
+	CBeanbon* beanbon1 = new CBeanbon;
+	beanbon1->SetPos(fPoint(1100, 350));
+	AddObject(beanbon1, GROUP_GAMEOBJ::MONSTER);
+	
 
 }
 

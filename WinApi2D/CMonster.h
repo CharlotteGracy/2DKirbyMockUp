@@ -17,7 +17,6 @@ enum class MON_TYPE
 {
 	NORMAL,
 	RANGE,
-
 	SIZE,
 };
 
