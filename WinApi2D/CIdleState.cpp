@@ -14,7 +14,7 @@ CIdleState::~CIdleState()
 
 void CIdleState::update()
 {
-	/*
+	
 	CPlayer* pPlayer = CPlayer::GetPlayer();
 	if (nullptr == pPlayer)
 		return;
@@ -30,7 +30,7 @@ void CIdleState::update()
 	{
 		ChangeAIState(GetOwnerAI(), STATE_MON::TRACE);
 	}
-	*/
+	
 }
 
 void CIdleState::Enter()

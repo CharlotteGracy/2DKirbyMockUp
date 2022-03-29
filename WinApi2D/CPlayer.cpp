@@ -14,15 +14,25 @@ CPlayer* CPlayer::instance = nullptr;
 CPlayer::CPlayer() {
 	CD2DImage* m_pImg = CResourceManager::GetInst()->LoadD2DImage(L"PlayerImg", L"texture\\Player_Kirby.png");
 	SetName(L"Player");
-	SetScale(fPoint(38.f, 38.f));
+	SetScale(fPoint(36.f, 36.f));
 
 	CreateCollider();
 	GetCollider()->SetScale(fPoint(20.f, 20.f));
 	GetCollider()->SetOffsetPos(fPoint(0.f, 5.f));
 
 	CreateAnimator();
-	GetAnimator()->CreateAnimation(L"LeftNone", m_pImg, fPoint(0.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.5f, 9);
+
+	/*GetAnimator()->CreateAnimation(L"LeftNone", m_pImg, fPoint(0.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.5f, 9);
 	GetAnimator()->CreateAnimation(L"RightNone", m_pImg, fPoint(0.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.5f, 9);
+	GetAnimator()->CreateAnimation(L"LeftMove", m_pImg, fPoint(0.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 10);
+	GetAnimator()->CreateAnimation(L"RightMove", m_pImg, fPoint(0.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 10);
+	GetAnimator()->CreateAnimation(L"LeftHit", m_pImg, fPoint(114.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 4);
+	GetAnimator()->CreateAnimation(L"RightHit", m_pImg, fPoint(114.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 4);
+	GetAnimator()->Play(L"LeftNone");*/
+
+	//TODO: 프레임 밀리는 거 수정, 방향 바꾸기
+	GetAnimator()->CreateAnimation(L"LeftNone", m_pImg, fPoint(0.f, 36.f), fPoint(36.f, 36.f), fPoint(36.f, 0.f), 0.5f, 9);
+	GetAnimator()->CreateAnimation(L"RightNone", m_pImg, fPoint(0.f, 36.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.5f, 9);
 	GetAnimator()->CreateAnimation(L"LeftMove", m_pImg, fPoint(0.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 10);
 	GetAnimator()->CreateAnimation(L"RightMove", m_pImg, fPoint(0.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 10);
 	GetAnimator()->CreateAnimation(L"LeftHit", m_pImg, fPoint(114.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 4);
@@ -111,6 +121,18 @@ void CPlayer::CreateBomb() {
 	else {
 		pBomb->SetDir(fVec2(1, 0));
 	}
+
+	//TODO: CreateBomb 애니메이션
+	CD2DImage* m_pImg2 = CResourceManager::GetInst()->LoadD2DImage(L"PlayerBomb", L"texture\\Kirby_Bomb.png");
+	SetName(L"PlayerBomb");
+	SetScale(fPoint(38.f, 38.f));
+
+	CreateCollider();
+	GetCollider()->SetScale(fPoint(20.f, 20.f));
+	GetCollider()->SetOffsetPos(fPoint(0.f, 5.f));
+
+	CreateAnimator();
+	GetAnimator()->CreateAnimation(L"ThrowBomb", m_pImg2, fPoint(0.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.5f, 9);
 
 
 

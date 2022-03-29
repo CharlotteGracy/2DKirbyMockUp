@@ -15,7 +15,7 @@ CTraceState::~CTraceState()
 void CTraceState::update()
 {
 
-	/*
+	
 	CPlayer* pPlayer = CPlayer::GetPlayer();
 	if (nullptr == pPlayer)
 		return;
@@ -35,7 +35,7 @@ void CTraceState::update()
 	fPoint pos = pMonster->GetPos();
 	pos += fvDiff.Normalize() * 100 * fDT;
 	pMonster->SetPos(pos);
-	*/
+	
 }
 
 void CTraceState::Enter()

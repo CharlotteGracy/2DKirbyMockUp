@@ -41,10 +41,11 @@ void CScene_Stage01::Enter() {
 	
 	// TODO: 몬스터 만들기
 
+	/*
 	CBeanbon* beanbon1 = new CBeanbon;
 	beanbon1->SetPos(fPoint(1100, 350));
 	AddObject(beanbon1, GROUP_GAMEOBJ::MONSTER);
-	
+	*/
 
 }
 
