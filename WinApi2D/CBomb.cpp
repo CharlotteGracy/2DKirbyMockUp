@@ -51,7 +51,6 @@ void CBomb::render(HDC hDC)
 	component_render();
 }
 
-//TODO: 캐릭터가 왼쪽을 보고 있을 때는 폭탄이 왼쪽으로 날아가도록 해야 함
 
 
 void CBomb::SetDir(fVec2 vec)

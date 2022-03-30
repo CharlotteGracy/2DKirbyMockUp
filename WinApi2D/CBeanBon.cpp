@@ -10,24 +10,21 @@
 #include "CTraceState.h"
 
 CBeanbon::CBeanbon() {
-	CD2DImage* m_pImg = CResourceManager::GetInst()->LoadD2DImage(L"Beanbon", L"texture\\Beanbon.png");
+	CD2DImage* m_pImg = CResourceManager::GetInst()->LoadD2DImage(L"Beanbon", L"texture\\Beanbon_Walk.png");
 	SetName(L"Beanbon");
-	SetScale(fPoint(38.f, 38.f));
+	SetScale(fPoint(25.f, 25.f));
 
-
-	SetName(L"Beanbon");
-	SetScale(fPoint(100, 100));
 
 	CreateCollider();
-	GetCollider()->SetScale(fPoint(20.f, 20.f));
+	GetCollider()->SetScale(fPoint(15.f, 15.f));
 	GetCollider()->SetOffsetPos(fPoint(0.f, 5.f));
 
 
 	CreateAnimator();
-	GetAnimator()->CreateAnimation(L"BeanbonWalk", m_pImg, fPoint(0, 0), fPoint(32.f, 32.f), fPoint(32.f, 0), 0.1f, 5, true);
+	GetAnimator()->CreateAnimation(L"BeanbonWalk", m_pImg, fPoint(0, 0), fPoint(37.f, 37.f), fPoint(37.f, 0), 0.1f, 5, true);
 	GetAnimator()->Play(L"BeanbonWalk");
 
-	GetAnimator()->CreateAnimation(L"BeanbonTrace", m_pImg, fPoint(0, 0), fPoint(70.f, 70.f), fPoint(70.f, 0), 0.3f, 1, true);
+	GetAnimator()->CreateAnimation(L"BeanbonTrace", m_pImg, fPoint(0, 0), fPoint(37.f, 37.f), fPoint(37.f, 0), 0.05f, 5, true);
 	GetAnimator()->Play(L"BeanbonTrace");
 }
 
@@ -38,6 +35,7 @@ CBeanbon::~CBeanbon() {
 
 void CBeanbon::render()
 {
+	component_render();
 }
 
 void CBeanbon::update()

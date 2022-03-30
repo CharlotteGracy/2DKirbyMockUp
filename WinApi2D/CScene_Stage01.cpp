@@ -32,6 +32,15 @@ void CScene_Stage01::Enter() {
 	backgroundObject->SetScale(fPoint(WINSIZEX, WINSIZEY));
 	AddObject(backgroundObject, GROUP_GAMEOBJ::BACKGROUND);
 
+
+	
+	//타일 로딩
+	wstring path = CPathManager::GetInst()->GetContentPath();
+	path += L"tile\\stage1";
+	LoadTile(path);
+
+
+
 	//플레이어 생성
 	CPlayer* pPlayer = new CPlayer;
 	pPlayer->SetPos(fPoint(200, 200));
@@ -41,11 +50,11 @@ void CScene_Stage01::Enter() {
 	
 	// TODO: 몬스터 만들기
 
-	/*
+	
 	CBeanbon* beanbon1 = new CBeanbon;
 	beanbon1->SetPos(fPoint(1100, 350));
 	AddObject(beanbon1, GROUP_GAMEOBJ::MONSTER);
-	*/
+	
 
 }
 

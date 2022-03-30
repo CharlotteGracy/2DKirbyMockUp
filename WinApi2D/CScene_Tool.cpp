@@ -34,9 +34,9 @@ void CScene_Tool::update()
 
 	if (KeyDown(VK_TAB))
 	{
-		ChangeScn(GROUP_SCENE::TITLE);
+		ChangeScn(GROUP_SCENE::TOOL);
 	}
-
+	
 	if (Key('A'))
 	{
 		CCameraManager::GetInst()->Scroll(fVec2(-1, 0),  m_velocity);
@@ -53,7 +53,7 @@ void CScene_Tool::update()
 	{
 		CCameraManager::GetInst()->Scroll(fVec2(0, 1), m_velocity);
 	}
-
+	
 	SetTileIdx();
 	SetTileGroup();
 }
@@ -167,7 +167,7 @@ void CScene_Tool::CreateTile(UINT xSize, UINT ySize)
 	m_iTileX = xSize;
 	m_iTileY = ySize;
 
-	CD2DImage* pImg = CResourceManager::GetInst()->LoadD2DImage(L"Tile", L"texture\\tile\\tilemap.bmp");
+	CD2DImage* pImg = CResourceManager::GetInst()->LoadD2DImage(L"Tile", L"texture\\tile\\blocktile.png");
 
 	for (UINT y = 0; y < ySize; y++)
 	{
@@ -237,7 +237,7 @@ void CScene_Tool::LoadTile(const wstring& strPath)
 	CreateTile(xCount, yCount);
 
 	const vector<CGameObject*>& vecTile = GetGroupObject(GROUP_GAMEOBJ::TILE);
-	CD2DImage* pImg = CResourceManager::GetInst()->LoadD2DImage(L"Tile", L"texture\\tile\\tilemap.bmp");
+	CD2DImage* pImg = CResourceManager::GetInst()->LoadD2DImage(L"Tile", L"texture\\tile\\blocktile.png");
 	CTile* pTile = new CTile;
 
 	for (UINT i = 0; i < tileCount; i++)

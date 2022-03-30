@@ -46,6 +46,7 @@ void CSceneManager::render()
 	m_pCurScene->render();
 }
 
+
 void CSceneManager::init()
 {
 	m_arrScene[(size_t)GROUP_SCENE::TITLE] = new CScene_Title;

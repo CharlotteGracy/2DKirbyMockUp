@@ -22,6 +22,19 @@ CPlayer::CPlayer() {
 
 	CreateAnimator();
 
+
+	//TODO: CreateBomb 애니메이션
+	CD2DImage* m_pImg2 = CResourceManager::GetInst()->LoadD2DImage(L"PlayerBomb", L"texture\\Kirby_Bomb.png");
+	SetName(L"PlayerBomb");
+	SetScale(fPoint(36.f, 36.f));
+
+	CreateCollider();
+	GetCollider()->SetScale(fPoint(20.f, 20.f));
+	GetCollider()->SetOffsetPos(fPoint(0.f, 5.f));
+
+	CreateAnimator();
+
+
 	/*GetAnimator()->CreateAnimation(L"LeftNone", m_pImg, fPoint(0.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.5f, 9);
 	GetAnimator()->CreateAnimation(L"RightNone", m_pImg, fPoint(0.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.5f, 9);
 	GetAnimator()->CreateAnimation(L"LeftMove", m_pImg, fPoint(0.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 10);
@@ -31,16 +44,24 @@ CPlayer::CPlayer() {
 	GetAnimator()->Play(L"LeftNone");*/
 
 	//TODO: 프레임 밀리는 거 수정, 방향 바꾸기
+	//TODO: 캐릭터가 왼쪽을 보고 있을 때 애니메이션 반전
+
+
 	GetAnimator()->CreateAnimation(L"LeftNone", m_pImg, fPoint(0.f, 37.f), fPoint(37.f, 37.f), fPoint(37.f, 0.f), 0.5f, 9);
 	GetAnimator()->CreateAnimation(L"RightNone", m_pImg, fPoint(0.f, 37.f), fPoint(37.f, 37.f), fPoint(37.f, 0.f), 0.5f, 9);
 	GetAnimator()->CreateAnimation(L"LeftMove", m_pImg, fPoint(0.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 10);
 	GetAnimator()->CreateAnimation(L"RightMove", m_pImg, fPoint(0.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 10);
 
+	//TODO: DownMove는 중력 구현 이후 빼기
 	GetAnimator()->CreateAnimation(L"DownMove", m_pImg, fPoint(0.f, 78.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 1);
+	GetAnimator()->CreateAnimation(L"Jump", m_pImg, fPoint(85.f, 155.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 1);
+
+	GetAnimator()->CreateAnimation(L"ThrowBomb", m_pImg2, fPoint(0.f, 0.f), fPoint(36.f, 32.f), fPoint(32.f, 0.f), 0.15f, 11);
 
 
-	GetAnimator()->CreateAnimation(L"LeftHit", m_pImg, fPoint(114.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 4);
-	GetAnimator()->CreateAnimation(L"RightHit", m_pImg, fPoint(114.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 4);
+//	GetAnimator()->CreateAnimation(L"LeftHit", m_pImg, fPoint(114.f, 0.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 4);
+	//GetAnimator()->CreateAnimation(L"RightHit", m_pImg, fPoint(114.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.25f, 4);
+
 	GetAnimator()->Play(L"LeftNone");
 
 	CAnimation* pAni;
@@ -49,6 +70,8 @@ CPlayer::CPlayer() {
 	pAni = GetAnimator()->FindAnimation(L"RightMove");
 	pAni->GetFrame(9).fptOffset = fPoint(0.f, -3.f);
 
+//	m_uiGroundCount = 0;
+//	m_fHorizontalSpeed = 0;
 }
 
 CPlayer::~CPlayer() {
@@ -75,9 +98,10 @@ void CPlayer::update() {
 		GetAnimator()->Play(L"RightMove");
 
 	}
+	
 	if (Key(VK_UP)) {
 		pos.y -= 150 * fDT;
-//		GetAnimator()->Play(L"Jump");
+		GetAnimator()->Play(L"Jump");
 
 	}
 	if (Key(VK_DOWN)) {
@@ -85,21 +109,46 @@ void CPlayer::update() {
 		GetAnimator()->Play(L"DownMove");
 
 	}
+	/*
+	if (Key('X')) {
 
+		m_fHorizontalSpeed = -300.f;
+	}
+	pos.y += m_fHorizontalSpeed * fDT;
+*/
 	SetPos(pos);
 
-	if (KeyDown(VK_SPACE)) {
+	if (KeyDown(VK_SPACE))
+	{
 		CreateBomb();
+		GetAnimator()->Play(L"ThrowBomb");
 	}
 
 	GetAnimator()->update();
 
+	/*
+	if (m_uiGroundCount > 0)
+	{
+		m_fHorizontalSpeed = 0.f;
+	}
+	else
+	{
+		m_fHorizontalSpeed += fDT * 500.f;
+		if (m_fHorizontalSpeed > 500.f)
+		{
+			m_fHorizontalSpeed = 500.f;
+		}
+	}*/
 }
 
 
 void CPlayer::render() {
 
 	component_render();
+
+}
+
+void CPlayer::OnCollision(CCollider* _pOther) {
 
 }
 
@@ -123,28 +172,12 @@ void CPlayer::CreateBomb() {
 	pBomb->SetPos(fpBombPos);
 //	pBomb->SetDir(fVec2(1, 0));
 
-	if (Key(VK_LEFT)/*캐릭터가 왼쪽을 보고 있을 때*/) {
-		/*TODO: 왼쪽으로 가고 있을 때(LEFT 키를 누르고 있을 때)는 
-		왼쪽으로 폭탄이 나오는데 가만히 있는 상태에서 왼쪽을 보고 있을 때는 
-		오른쪽으로 발사되는 문제가 있음.*/
+	if (m_bIsLeft == true) {
 		pBomb->SetDir(fVec2(-1, 0));
 	}
 	else {
 		pBomb->SetDir(fVec2(1, 0));
 	}
-
-	//TODO: CreateBomb 애니메이션
-	CD2DImage* m_pImg2 = CResourceManager::GetInst()->LoadD2DImage(L"PlayerBomb", L"texture\\Kirby_Bomb.png");
-	SetName(L"PlayerBomb");
-	SetScale(fPoint(38.f, 38.f));
-
-	CreateCollider();
-	GetCollider()->SetScale(fPoint(20.f, 20.f));
-	GetCollider()->SetOffsetPos(fPoint(0.f, 5.f));
-
-	CreateAnimator();
-	GetAnimator()->CreateAnimation(L"ThrowBomb", m_pImg2, fPoint(0.f, 38.f), fPoint(38.f, 38.f), fPoint(38.f, 0.f), 0.5f, 9);
-
 
 
 	CreateObj(pBomb, GROUP_GAMEOBJ::BOMB_PLAYER);

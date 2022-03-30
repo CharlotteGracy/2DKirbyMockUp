@@ -47,7 +47,7 @@ CMonster* CMonster::Create(MON_TYPE type, fPoint pos)
 
 	
 	
-	//assert(pMon);
+//	assert(pMon);
 	return pMon;
 }
 

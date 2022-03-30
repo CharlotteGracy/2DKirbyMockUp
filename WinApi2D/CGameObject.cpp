@@ -2,6 +2,7 @@
 #include "CGameObject.h"
 #include "CCollider.h"
 #include "CAnimator.h"
+#include "CGravity.h"
 
 CGameObject::CGameObject()
 {
@@ -43,6 +44,11 @@ CGameObject::~CGameObject()
 	{
 		delete m_pAnimator;
 	}
+	/*
+	if (nullptr != m_pGravity) {
+		delete m_pGravity;
+	}
+	*/
 }
 
 void CGameObject::SetPos(fPoint pos)
@@ -91,6 +97,11 @@ void CGameObject::finalupdate()
 	{
 		m_pCollider->finalupdate();
 	}
+	/*
+	if (nullptr != m_pGravity) {
+		m_pGravity->finalupdate();
+	}
+*/
 }
 
 void CGameObject::render()
@@ -131,6 +142,16 @@ void CGameObject::CreateCollider()
 	m_pCollider->m_pOwner = this;
 }
 
+/*
+void CGameObject::GetGravity() {
+	return m_pGravity;
+}
+
+void CGameObject::CreateGravity() {
+	m_pGravity = new CGravity();
+	m_pGravity->m_pOwner = this;
+}
+*/
 CAnimator* CGameObject::GetAnimator()
 {
 	return m_pAnimator;

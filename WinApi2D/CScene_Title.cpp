@@ -3,6 +3,7 @@
 #include "CImageObject.h"
 #include "CImageButton.h"
 
+
 CScene_Title::CScene_Title() {
 
 }
@@ -15,6 +16,8 @@ CScene_Title::~CScene_Title() {
 void ClickStartButton(DWORD_PTR, DWORD_PTR) {
 
 	ChangeScn(GROUP_SCENE::STAGE_01);
+
+
 
 }
 
@@ -31,6 +34,8 @@ void ClickExitButton(DWORD_PTR, DWORD_PTR) {
 void CScene_Title::Enter() {
 	//TODO: 로고와 버튼 위치 배경에 맞춰 조금 조정하기
 	//1. 배경 출력, 
+
+
 
 	CImageObject* backgroundObject = new CImageObject;
 	backgroundObject->Load(L"BackImage", L"texture\\background_start.png");
@@ -74,6 +79,14 @@ void CScene_Title::Enter() {
 	exitButton->SetClickedCallBack(ClickExitButton, 0, 0);
 	AddObject(exitButton, GROUP_GAMEOBJ::UI);
 
+}
+
+
+void CScene_Title::update() {
+	if (KeyDown(VK_TAB))
+	{
+		ChangeScn(GROUP_SCENE::TOOL);
+	}
 }
 
 void CScene_Title::Exit() {

@@ -4,13 +4,9 @@ class CD2DImage;
 class AI;
 
 
-
-
-
-
-
 class CBeanbon : public CMonster
 {
+public:
 	CBeanbon();
 	~CBeanbon();
 

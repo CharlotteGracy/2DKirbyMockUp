@@ -1,5 +1,4 @@
 #pragma once
-
 class CGameObject;
 
 class CGravity
