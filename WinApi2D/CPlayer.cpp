@@ -65,10 +65,13 @@ void CPlayer::update() {
 	fPoint pos = GetPos();
 	if (Key(VK_LEFT)) {
 		pos.x -= 150 * fDT;
+		m_bIsLeft = true;
 		GetAnimator()->Play(L"LeftMove");
 	}
 	if (Key(VK_RIGHT)) {
 		pos.x += 150 * fDT;
+		m_bIsLeft = false;
+
 		GetAnimator()->Play(L"RightMove");
 
 	}

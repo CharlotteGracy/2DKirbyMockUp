@@ -8,7 +8,7 @@ class CPlayer : public CGameObject
 private:
 	static CPlayer* instance;
 	float m_fSpeed = 300;
-
+	bool m_bIsLeft;
 	void CreateBomb();
 
 

@@ -49,6 +49,9 @@ float CBeanbon::GetSpeed()
 	return 0.0f;
 }
 
+const tMonInfo& CBeanbon::GetMonInfo() {
+	return tMonInfo();
+}
 
 void CBeanbon::SetSpeed(float speed)
 {
